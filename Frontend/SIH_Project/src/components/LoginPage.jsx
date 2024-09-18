@@ -167,14 +167,14 @@ export default function LoginPage() {
           <div>
             <button
               
-              className="flex w-full justify-center rounded-md bg-[#4a2c2a] text-white hover:bg-[#cd882a] px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#cb0100]" onClick={handleSubmit}
+              className="flex w-full justify-center rounded-md bg-[#4a2c2a] text-white hover:bg-[#cd882a] hover:text-[#4a2c2a] px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#cb0100]" onClick={handleSubmit}
             >
               Sign in
             </button>
           </div>
           <div className='flex gap-2 text-sm mt-5 justify-center'>
             <span>Don't have an account?</span>
-            <Link to='/' className='text-blue-500'>
+            <Link to='/' className='text-blue-500 hover:underline'>
               Sign Up
             </Link>
           </div>

@@ -1,23 +1,24 @@
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useState } from "react";
-import Lottie from 'lottie-react';
-import AlumniAnimation from '../assets/Animations/AlumniAnimation.json';
-import ReCAPTCHA from 'react-google-recaptcha';
-import {Link} from 'react-router-dom'
+import Lottie from "lottie-react";
+import AlumniAnimation from "../assets/Animations/AlumniAnimation.json";
+import ReCAPTCHA from "react-google-recaptcha";
+import SignupAnimation from "../assets/Animations/Animation - 1726648448935.json";
+import { Link } from "react-router-dom";
 export default function SignUpPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword,setConfirmPassword] = useState("")
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [name, setName] = useState("");
   const [age, setAge] = useState("");
   const role = "academics";
   const [error, setError] = useState("");
-  const [recaptchaToken, setRecaptchaToken] = useState('');
+  const [recaptchaToken, setRecaptchaToken] = useState("");
   const [isRecaptchaVerified, setIsRecaptchaVerified] = useState(false);
-  const [RecaptchaMessage,setRecaptchaMessage] = useState(false);
-  
+  const [RecaptchaMessage, setRecaptchaMessage] = useState(false);
+
   const togglePasswordVisibility = (e) => {
     e.preventDefault();
     setShowPassword(!showPassword);
@@ -29,23 +30,23 @@ export default function SignUpPage() {
   const handleRecaptchaChange = (token) => {
     setRecaptchaToken(token);
     setIsRecaptchaVerified(true); // Set to true when reCAPTCHA is completed
-};
+  };
 
-const handleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     if (!recaptchaToken) {
-        setError('Please complete the reCAPTCHA.');
-        setIsRecaptchaVerified(false); // Reset reCAPTCHA verification state
-        setRecaptchaMessage(true);
-        return;
+      setError("Please complete the reCAPTCHA.");
+      setIsRecaptchaVerified(false); // Reset reCAPTCHA verification state
+      setRecaptchaMessage(true);
+      return;
     }
-    
+
     // Proceed with the form submission (e.g., send data to backend)
     console.log({ email, password, name, age, recaptchaToken });
     // Reset error state
-    setError('');
-    setRecaptchaMessage(false)
-};
+    setError("");
+    setRecaptchaMessage(false);
+  };
 
   // const handleSignUp = async (e) => {
   //     e.preventDefault();
@@ -98,20 +99,45 @@ const handleSubmit = (e) => {
 
   return (
     <div className="flex flex-row gap-2">
-      <div className="flex min-h-full mt-20 flex-1 flex-col justify-center ml-4 py-12  hidden md:block">
-        <Lottie animationData={AlumniAnimation} className="h-full w-full"/>
-      </div>
-      <div className="flex min-h-full flex-1 flex-col justify-center lg:mr-52 py-12 mt-20 ">
+      <div className="flex min-h-full flex-1 flex-col justify-center lg:ml-40 py-12 mt-20 ">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-        
           <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-[#4a2c2a]">
             Sign up for an account
           </h2>
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form action="#" method="POST" className="space-y-4" onSubmit={handleSubmit}>
-          <div className="flex flex-col">
+          <form
+            action="#"
+            method="POST"
+            className="space-y-4"
+            onSubmit={handleSubmit}
+          >
+            <div className="flex flex-row justify-center">
+              <h2>Role : </h2>
+              <label className="flex items-center space-x-2">
+                <input
+                  type="radio"
+                  name="status"
+                  value="alumni"
+                  className="hidden peer"
+                />
+                <span className="w-5 h-5 rounded-full border-2 border-gray-400 flex items-center justify-center peer-checked:bg-blue-500 peer-checked:border-blue-500"></span>
+                <span>Alumni</span>
+              </label>
+
+              <label className="flex items-center space-x-2 ml-4">
+                <input
+                  type="radio"
+                  name="status"
+                  value="student"
+                  className="hidden peer"
+                />
+                <span className="w-5 h-5 rounded-full border-2 border-gray-400 flex items-center justify-center peer-checked:bg-blue-500 peer-checked:border-blue-500"></span>
+                <span>Student</span>
+              </label>
+            </div>
+            <div className="flex flex-col">
               <label
                 htmlFor="name"
                 className="block text-sm flex font-medium text-gray-900"
@@ -151,6 +177,28 @@ const handleSubmit = (e) => {
                 />
               </div>
             </div>
+            <div className="flex flex-col">
+              <label
+                htmlFor="email"
+                className="flex text-sm font-medium text-gray-900 outline-none"
+              >
+                College Name
+              </label>
+              <div className="mt-2">
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  required
+                  autoComplete="email"
+                  onChange={(e) => setEmail(e.target.value)}
+                  value={email}
+                  className="block w-full rounded-md px-2 border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 sm:text-sm sm:leading-6"
+                />
+              </div>
+            </div>
+
+            
 
             <div className="flex flex-col">
               <label
@@ -216,36 +264,39 @@ const handleSubmit = (e) => {
                 </button>
               </div>
             </div>
-            
 
             <div className="w-full flex justify-center">
-            <ReCAPTCHA
-                        sitekey="6Ld8OUcqAAAAAIPAq8cSVeA1QVzB826prjigIWMk"
-                        onChange={handleRecaptchaChange}
-                    />
+              <ReCAPTCHA
+                sitekey="6Ld8OUcqAAAAAIPAq8cSVeA1QVzB826prjigIWMk"
+                onChange={handleRecaptchaChange}
+              />
             </div>
 
             <div>
-            {RecaptchaMessage && (
-                            <p className="text-red-500 text-sm mb-2">
-                                Please complete the reCAPTCHA to enable the submit button.
-                            </p>
-                        )}
-              <button type = "submit"  className="flex w-full justify-center rounded-md hover:bg-[#cd882a] bg-[#4a2c2a] hover:text-white px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#cb0100]">
+              {RecaptchaMessage && (
+                <p className="text-red-500 text-sm mb-2">
+                  Please complete the reCAPTCHA to enable the submit button.
+                </p>
+              )}
+              <button
+                type="submit"
+                className="flex w-full justify-center rounded-md hover:bg-[#cd882a] bg-[#4a2c2a] hover:text-[#4a2c2a] px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#cb0100]"
+              >
                 Sign up
               </button>
-
             </div>
-            <div className='flex gap-2 text-sm mt-5 justify-center'>
-            <span>Have an account?</span>
-            <Link to='/sign-in' className='text-blue-500'>
-              Sign In
-            </Link>
-          </div>
+            <div className="flex gap-2 text-sm mt-5 justify-center">
+              <span>Have an account?</span>
+              <Link to="/sign-in" className="text-blue-500 hover:underline">
+                Sign In
+              </Link>
+            </div>
           </form>
         </div>
+      </div>
+      <div className="flex max-h-full mt-20 flex-1 flex-col justify-center ml-4 py-12  hidden md:block">
+        <Lottie animationData={SignupAnimation} className="h-full w-full" />
       </div>
     </div>
   );
 }
-
