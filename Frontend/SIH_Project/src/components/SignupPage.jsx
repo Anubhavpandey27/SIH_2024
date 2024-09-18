@@ -174,7 +174,7 @@ const handleSubmit = (e) => {
                 <button
                   type="button"
                   onClick={togglePasswordVisibility}
-                  className="absolute inset-y-0 right-0 flex items-center pr-3 text-[#cb0100] hover:text-gray-600"
+                  className="absolute inset-y-0 right-0 flex items-center pr-3 text-[#4a2c2a] hover:text-[#cd882a]"
                 >
                   {showPassword ? (
                     <FaEyeSlash size={24} />
@@ -206,7 +206,7 @@ const handleSubmit = (e) => {
                 <button
                   type="button"
                   onClick={toggleConfirmPasswordVisibility}
-                  className="absolute inset-y-0 right-0 flex items-center pr-3 text-[#cb0100] hover:text-gray-600"
+                  className="absolute inset-y-0 right-0 flex items-center pr-3 text-[#4a2c2a] hover:text-[#cd882a] hover:text-gray-600"
                 >
                   {showConfirmPassword ? (
                     <FaEyeSlash size={24} />
@@ -231,7 +231,7 @@ const handleSubmit = (e) => {
                                 Please complete the reCAPTCHA to enable the submit button.
                             </p>
                         )}
-              <button type = "submit"  className="flex w-full justify-center rounded-md bg-[#cb0100] px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#cb0100]">
+              <button type = "submit"  className="flex w-full justify-center rounded-md hover:bg-[#cd882a] bg-[#4a2c2a] hover:text-white px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#cb0100]">
                 Sign up
               </button>
 
