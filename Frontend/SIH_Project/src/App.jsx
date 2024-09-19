@@ -69,6 +69,7 @@ function App() {
 
           {/* <Route path='/landing' element={<LandingPage/>}/>
           <Route path = '/student' element={<StudentPage/>}/> */}
+          
           <Route path="/"
             element={
               isAuthenticated == 1 ? (

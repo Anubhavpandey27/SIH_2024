@@ -15,12 +15,12 @@ server:
       request-attributes-enabled: true
 spring:
   datasource:
-    username: anubhav
-    password: a1vV70jx8rHxUgWwGyJrpEcMwNCw839z
+    username: postgres
+    password: 12345678
     driver-class-name: org.postgresql.Driver
     hikari:
-      jdbc-url: jdbc:postgresql://dpg-crlq7htumphs73ebdgd0-a.singapore-postgres.render.com/visionaries_kmul
-    url: jdbc:postgresql://dpg-crlq7htumphs73ebdgd0-a.singapore-postgres.render.com/visionaries_kmul
+      jdbc-url: jdbc:postgresql://localhost:5432/visionaries
+    url: jdbc:postgresql://localhost:5432/visionaries
   jpa:
     hibernate:
       ddl-auto: update

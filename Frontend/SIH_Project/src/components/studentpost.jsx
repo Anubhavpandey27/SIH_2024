@@ -13,7 +13,7 @@ const AlumniPost = () => {
   const API_BASE_URL = 'api url'; // Replace with backend api
 
   useEffect(() => {
-    fetchPosts();
+    // fetchPosts();
   }, []);
 
   const fetchPosts = async () => {
