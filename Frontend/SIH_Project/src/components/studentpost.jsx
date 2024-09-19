@@ -2,7 +2,11 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 const AlumniPost = () => {
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState([
+    { id: 1, content: 'Excited to share our new project milestone! 🎉' },
+  { id: 2, content: 'Looking for feedback on my latest research paper. 📚' },
+  { id: 3, content: 'Great networking opportunity at the upcoming conference. Join us! 🌟' }
+  ]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -15,7 +19,7 @@ const AlumniPost = () => {
   const fetchPosts = async () => {
     try {
       const response = await axios.get(`${API_BASE_URL}/api/alumni/posts`);
-      setPosts(response.data);
+      setPosts([...posts,response.data]);
       setIsLoading(false);
     } catch (err) {
       console.error('Error fetching posts:', err);
